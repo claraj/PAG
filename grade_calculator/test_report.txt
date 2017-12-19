@@ -1,0 +1,89 @@
+.FE
+======================================================================
+ERROR: test_which_number_larger_second_larger (Lab_1.tests.q1_test.Q1Test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q1_test.py", line 32, in test_which_number_larger_second_larger
+    self.assertEqual('second', q1.which_number_is_larger(7, 20), msg=msg % (7, 20))
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/lab/q1.py", line 28, in which_number_is_larger
+    raise Exception
+Exception
+
+======================================================================
+FAIL: test_which_number_larger_same_numbers (Lab_1.tests.q1_test.Q1Test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q1_test.py", line 14, in test_which_number_larger_same_numbers
+    self.assertEqual('same', q1.which_number_is_larger(1.5, 1.5), msg=msg % (1.5, 1.5))
+AssertionError: 'same' != None : When called with 1.5 and 1.5, which_number_is_larger() should return "same"
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=1, errors=1)
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+FFF
+======================================================================
+FAIL: test_check_length_of_name_6_letters (Lab_1.tests.q2_test.Q2LengthTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q2_test.py", line 27, in test_check_length_of_name_6_letters
+    self.assertIsNotNone(q2.is_longer_than_6_letters(name), msg=msg % name)
+AssertionError: unexpectedly None : When called with Barack, is_longer_than_6_letters() should return False"
+
+======================================================================
+FAIL: test_check_length_of_name_6_or_less (Lab_1.tests.q2_test.Q2LengthTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q2_test.py", line 42, in test_check_length_of_name_6_or_less
+    self.assertIsNotNone(q2.is_longer_than_6_letters(name), msg=msg % name)
+AssertionError: unexpectedly None : When called with Kanye, is_longer_than_6_letters() should return False"
+
+======================================================================
+FAIL: test_check_length_of_name_longer_than_6 (Lab_1.tests.q2_test.Q2LengthTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q2_test.py", line 15, in test_check_length_of_name_longer_than_6
+    self.assertTrue(q2.is_longer_than_6_letters(name), msg=msg % name)
+AssertionError: None is not true : When called with Beyonce, is_longer_than_6_letters() should return True"
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=3)
+FF
+======================================================================
+FAIL: test_shouting_lowercase (Lab_1.tests.q2_test.Q2ShoutTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q2_test.py", line 61, in test_shouting_lowercase
+    self.assertEqual(name_shout, q2.shout(name), msg=msg % (name, name_shout))
+AssertionError: 'YODA!!!' != 'BEYONCE!!!'
+- YODA!!!
++ BEYONCE!!!
+ : When called with yoda, shout() should return "YODA!!!" 
+
+======================================================================
+FAIL: test_shouting_uppercase (Lab_1.tests.q2_test.Q2ShoutTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/admin/Development/python/1150_Programming_Logic_Labs/Lab_1/tests/q2_test.py", line 70, in test_shouting_uppercase
+    self.assertEqual(name_shout, q2.shout(name), msg=msg % (name, name_shout))
+AssertionError: 'PIZZA!!!' != 'BEYONCE!!!'
+- PIZZA!!!
++ BEYONCE!!!
+ : When called with PIZZA, shout() should return "PIZZA!!!" 
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK

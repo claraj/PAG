@@ -1,0 +1,19 @@
+{ "name": "Lab 1",
+  "total_points" : 20,
+
+  "questions": [
+
+    {
+      "name" : "q1",
+      "points" : 5,
+      "test_file": "q1_test"
+    },
+
+    {
+      "name" : "q2",
+      "points" : 15,
+      "test_file": "q2_test"
+    }
+
+  ]
+}
