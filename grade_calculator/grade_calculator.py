@@ -6,15 +6,14 @@
 import json
 import os
 import unittest
-import sys
-import io
 import importlib
 import inspect
 
 grade_json_file = 'grades.json'  # Modify this if the filename with points and test files is changed
 test_out_file = 'test_report.txt'
+round_grades_to = 2  # how many decimal places?  Unused at the moment.
 
-# Dump output into text file to not clutter console output.
+# Dump test output into text file to not clutter console output.
 # test_out.txt is human-readable, may be used for debugging
 runner = unittest.TextTestRunner(open(test_out_file, 'w'))
 
@@ -31,7 +30,7 @@ def calc(lab):
 
     total_points = assignment.total_points
 
-    print('total points for this assignment:', total_points)
+    print('Total points for this assignment:', total_points)
 
     messages = []
 
@@ -39,10 +38,13 @@ def calc(lab):
 
     for question in assignment.questions:
 
+        print()
+
         test_file = question['test_file']
         question_points = question['points']
+        question_name = question['name']
 
-        print('points available for question ' + question['name'], question_points)
+        print('Points available for question %s:' % question_name, question_points)
 
         results = run_test(lab, test_file)
 
@@ -66,7 +68,8 @@ def calc(lab):
             for fail in result.failures:
                 messages.append(fail)
 
-            print('result %s: total points %s total tests %s total fails %s total errors %s' % (str(result), total_points, total_tests_run, total_fails, total_errors))
+            # For debugging, remove after testing
+            print('Result: total points %s total tests %s total fails %s total errors %s' % (question_points, total_tests_run, total_fails, total_errors))
 
         # Points proportional to number of passing tests
         # So if there are 10 points for the question, and 3 out of 5 tests pass,
@@ -79,7 +82,7 @@ def calc(lab):
         else:
             points_for_question = (passing_tests / total_tests_run) * question_points
 
-        print('points earned for question', points_for_question)
+        print('points earned for question %s' % question_name, points_for_question)
         points_earned += points_for_question
 
 
@@ -88,10 +91,11 @@ def calc(lab):
 
 def run_test(lab, test_file):
 
-    '''
+    """
+    :param lab: name of directory containing the lab materials
     :param test_file: the test file name, read from JSON. The module/package is assumed
     :return: test results.
-    '''
+    """
 
     #test_file = 'Lab_1.tests.q1_test'  # Example, will be read from JSON
 
@@ -99,7 +103,7 @@ def run_test(lab, test_file):
     test_package = importlib.import_module(test_file)
 
     objects = [m[1] for m in inspect.getmembers(test_package) if inspect.isclass(m[1])]
-    print('objects', objects)
+    #print('objects', objects)
 
     results = []
 
@@ -107,7 +111,7 @@ def run_test(lab, test_file):
 
         # Skip the superclass TestCase
         result = runner.run(unittest.makeSuite(obj))  #
-        print('THIS many tests were run', result.testsRun)
+        #print('this many tests were run', result.testsRun)
 
         results.append(result)
 
@@ -145,6 +149,7 @@ def read_grade_json(lab):
 # test
 
 pts, msgs = calc('Lab_1')
-print('POINTS ', pts)
-print('MESSAGES', msgs)
+print('\nSUMMARY\n')
+print('TOTAL POINTS', pts)
+print('MESSAGES', msgs)   ## TODO replace with user-friendly message
 
