@@ -22,11 +22,7 @@ def which_number_is_larger(first, second):
     # TODO if the second number is larger, return the string 'second'
     # TODO if the numbers are the same, return the string 'same'
 
-    if first > second:
-        return "first"
-    if second > first:
-        raise Exception
-    return  # TODO replace this with your code
+    return   # TODO replace this with your code
 
 
 # You don't need to modify this code.
